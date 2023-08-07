@@ -1,0 +1,58 @@
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable value-list-comma-space-before */
+/* stylelint-disable font-family-name-quotes */
+body {
+  background-color: #FFFFFF;
+  font-family: 'Nunito', sans-serif;
+  height: 640px;
+  margin: auto;
+  width: 360px;
+}
+
+.start-recipe-btn {
+  position: fixed;
+  bottom: 0;
+  color: white;
+  cursor: pointer;
+  position: fixed;
+  border-radius: 200px;
+  padding-bottom: 10px;
+  z-index: 10;
+}
+
+label
+
+input[type="checkbox"]{
+  appearance: none;
+  -webkit-appearance: none;
+  height: 14px;
+  width: 14px;
+  background-color: #d5d5d5;
+  border-radius: 5px;
+}
+
+input[type="checkbox"]:hover{
+  background-color: #d5d5d5;
+}
+
+input[type="checkbox"]:checked{
+  background-color: #6abf73;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.recipe-list::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: #80E78B;
+  margin-right: 6px;
+}
+
+.recipe-list {
+  display: flex;
+  align-items: center
+}
