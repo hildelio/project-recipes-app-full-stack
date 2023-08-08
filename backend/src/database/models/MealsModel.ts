@@ -266,7 +266,7 @@ SequelizeMeals.init(
     timestamps: false,
     tableName: 'meals',
     modelName: 'Meals',
-    underscored: true,
+    // underscored: true,
   },
 );
 
