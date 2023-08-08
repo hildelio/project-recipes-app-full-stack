@@ -1,5 +1,3 @@
-/* eslint-disable max-lines */
-
 import {
   DataTypes,
   Model,
