@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
-import TeamsService from '../services/TeamsService';
+import MealsService from '../services/MealsService';
 
 export default class TeamsController {
   constructor(
-    private mealsService = new TeamsService(),
+    private mealsService = new MealsService(),
   ) { }
 
   public async getAllMeals(_req: Request, res: Response) {
-    const serviceResponse = await this.teamsService.getAllMeals();
+    const serviceResponse = await this.mealsService.getAllMeals();
     res.status(200).json(serviceResponse.data);
   }
 
