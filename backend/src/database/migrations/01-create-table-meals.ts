@@ -9,6 +9,7 @@ export default {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
       },
       strMeal: {
         type: DataTypes.STRING,
