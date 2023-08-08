@@ -8,8 +8,8 @@ export default class TeamsService {
   ) { }
 
   public async getAllMeals(): Promise<ServiceResponse<IMeal[]>> {
-    const allTeams = await this.mealsModel.findAll();
-    return { status: 'SUCCESSFUL', data: allTeams };
+    const allMeals = await this.mealsModel.findAll();
+    return { status: 'SUCCESSFUL', data: allMeals as any };
   }
 
 }

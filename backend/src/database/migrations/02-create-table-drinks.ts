@@ -7,203 +7,182 @@ export default {
     return queryInterface.createTable<Model<IDrink>>('drinks', {
       idDrink: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         primaryKey: true,
         autoIncrement: true,
       },
       strDrink: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
-      strCategory: {
+      strDrinkAlternate: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strAlcoholic: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strGlass: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strInstructions: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strDrinkThumb: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strTags: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
+      },
+      strVideo: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      strCategory: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      strAlcoholic: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      strGlass: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      strInstructions: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      strDrinkThumb: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       strIngredient1: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient2: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient3: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient4: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient5: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient6: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient7: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient8: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient9: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient10: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient11: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient12: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient13: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient14: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strIngredient15: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strIngredient16: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strIngredient17: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strIngredient18: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strIngredient19: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strIngredient20: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure1: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure2: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure3: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure4: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure5: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure6: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure7: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure8: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure9: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure10: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure11: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure12: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure13: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure14: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       strMeasure15: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
-      strMeasure16: {
+      strImageSource: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
-      strMeasure17: {
+      strImageAttribution: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
-      strMeasure18: {
+      strCreativeCommonsConfirmed: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
-      strMeasure19: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      dateModified: {
+        type: DataTypes.DATE,
+        allowNull: true,
       },
-      strMeasure20: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strSource: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-
     });
   },
   down(queryInterface: QueryInterface) {
