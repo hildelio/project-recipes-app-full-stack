@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+
 import {
   DataTypes,
   Model,
@@ -7,14 +9,15 @@ import {
 } from 'sequelize';
 import db from '.';
 
-class SequelizeMeals extends
-  Model<InferAttributes<SequelizeMeals>, InferCreationAttributes<SequelizeMeals>> {
-  declare idMeal: CreationOptional<number>;
-  declare strMeal: string;
+class SequelizeDrinks extends
+  Model<InferAttributes<SequelizeDrinks>, InferCreationAttributes<SequelizeDrinks>> {
+  declare idDrink: CreationOptional<number>;
+  declare strDrink: string;
   declare strCategory: string;
-  declare strArea: string;
+  declare strAlcoholic: string;
+  declare strGlass: string;
   declare strInstructions: string;
-  declare strMealThumb: string;
+  declare strDrinkThumb: string;
   declare strTags: string;
   declare strYoutube: string;
   declare strIngredient1: string;
@@ -60,15 +63,15 @@ class SequelizeMeals extends
   declare strSource: string;
 }
 
-SequelizeMeals.init(
+SequelizeDrinks.init(
   {
-    idMeal: {
+    idDrink: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
       autoIncrement: true,
     },
-    strMeal: {
+    strDrink: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -76,7 +79,11 @@ SequelizeMeals.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    strArea: {
+    strAlcoholic: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    strGlass: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -84,7 +91,7 @@ SequelizeMeals.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    strMealThumb: {
+    strDrinkThumb: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -264,10 +271,10 @@ SequelizeMeals.init(
   {
     sequelize: db,
     timestamps: false,
-    tableName: 'meals',
-    modelName: 'Meals',
+    tableName: 'drinks',
+    modelName: 'Drinks',
     underscored: true,
   },
 );
 
-export default SequelizeMeals;
+export default SequelizeDrinks;
