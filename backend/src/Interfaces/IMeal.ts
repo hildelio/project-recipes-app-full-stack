@@ -1,6 +1,7 @@
 export default interface IMeal {
   idMeal: number;
   strMeal: string;
+  strDrinkAlternate: null,
   strCategory: string;
   strArea: string;
   strInstructions: string;
@@ -48,4 +49,7 @@ export default interface IMeal {
   strMeasure19: string;
   strMeasure20: string;
   strSource: string;
+  strImageSource: null;
+  strCreativeCommonsConfirmed: null;
+  dateModified: null;
 }
