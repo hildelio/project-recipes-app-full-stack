@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import MealsService from '../services/MealsService';
 
-export default class TeamsController {
+export default class MealsController {
   constructor(
     private mealsService = new MealsService(),
   ) { }

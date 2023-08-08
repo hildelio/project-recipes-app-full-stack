@@ -15,7 +15,7 @@ class App {
   }
 
   private routes(): void {
-    this.app.use('/teams', mealsRouter);
+    this.app.use('/meals', mealsRouter);
   }
 
   private config():void {

@@ -9,6 +9,12 @@ export default interface IDrink {
   strAlcoholic: string;
   strGlass: string;
   strInstructions: string;
+  strInstructionsES: null,
+  strInstructionsDE: Text,
+  strInstructionsFR: null,
+  strInstructionsIT: Text,
+  strInstructionsZHHANS: null,
+  strInstructionsZHHANT: null,
   strDrinkThumb: string;
   strIngredient1: string;
   strIngredient2: string;

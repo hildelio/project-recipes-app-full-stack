@@ -2,7 +2,7 @@ import MealsModel from '../database/models/MealsModel';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import IMeal from '../Interfaces/IMeal';
 
-export default class TeamsService {
+export default class MealsService {
   constructor(
     private mealsModel = MealsModel,
   ) { }
@@ -13,4 +13,3 @@ export default class TeamsService {
   }
 
 }
-// coment

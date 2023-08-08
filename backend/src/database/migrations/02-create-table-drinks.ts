@@ -47,6 +47,30 @@ export default {
         type: DataTypes.TEXT,
         allowNull: true,
       },
+      strInstructionsES: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      strInstructionsDE: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      strInstructionsFR: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      strInstructionsIT: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      strInstructionsZHHANS:{
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      strInstructionsZHHANT: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
       strDrinkThumb: {
         type: DataTypes.STRING,
         allowNull: true,
