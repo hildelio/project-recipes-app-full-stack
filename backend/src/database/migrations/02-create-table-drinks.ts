@@ -31,6 +31,10 @@ export default {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      strIBA: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       strAlcoholic: {
         type: DataTypes.STRING,
         allowNull: true,

@@ -5,6 +5,7 @@ export default interface IDrink {
   strTags: null,
   strVideo: null,
   strCategory: string;
+  strIBA: null,
   strAlcoholic: string;
   strGlass: string;
   strInstructions: string;
