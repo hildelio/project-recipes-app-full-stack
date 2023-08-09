@@ -21,6 +21,14 @@ export default class MealsController {
     res.status(200).json(serviceResponse.data);
   }
 
+  //GET MEAL BY ID
+  public async getMealById(req: Request, res: Response) {
+    const { idMeal } = req.params;
+    const serviceResponse = await this.mealsService.getMealById(idMeal);
+    if (!serviceResponse) return null;
+    res.status(200).json(serviceResponse.data);
+  }
+
   // GET MEAL BY FIRST LETTER
   public async getMealByFirstLetter(req: Request, res: Response) {
     const { letter } = req.params;

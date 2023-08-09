@@ -21,6 +21,13 @@ export default class MealsService {
     return { status: 'SUCCESSFUL', data: meal as any };
   }
 
+  // GET MEAL BY ID
+  public async getMealById(idMeal: string): Promise<ServiceResponse<IMeal[]> | null> {
+    const meal = await this.mealsModel.findOne({ where: { idMeal } });
+     if (!meal) return null;
+     return { status: 'SUCCESSFUL', data: meal as any };
+   }
+
   // GET MEAL BY FIRST LETTER
   public async getMealsByFirstLetter(letter: string): Promise<ServiceResponse<IMeal[]>> {
     const meals = await this.mealsModel.findAll({ where: { strMeal: { [sequelize.Op.like]: `${letter}%` } } });

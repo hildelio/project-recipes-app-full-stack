@@ -20,6 +20,14 @@ export default class DrinksController {
    res.status(200).json(serviceResponse.data);
  }
 
+   //GET DRINK BY ID
+ public async getDrinkById(req: Request, res: Response) {
+   const { idDrink } = req.params;
+   const serviceResponse = await this.drinksService.getDrinkById(idDrink);
+   if (!serviceResponse) return null;
+   res.status(200).json(serviceResponse.data);
+ }
+
    // GET DRINK BY FIRST LETTER
   public async getMDrinkByFirstLetter(req: Request, res: Response) {
     const { letter } = req.params;
