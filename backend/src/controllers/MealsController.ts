@@ -11,4 +11,12 @@ export default class MealsController {
     res.status(200).json(serviceResponse.data);
   }
 
+  public async getMealByName(req: Request, res: Response) {
+    // const { mealNameBody } = req.body
+    const { strMeal } = req.params;
+    const serviceResponse = await this.mealsService.getMealByName(strMeal);
+    if (!serviceResponse) return null;
+    res.status(200).json(serviceResponse.data);
+  }
+
 }
