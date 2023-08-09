@@ -9,6 +9,7 @@ import Header from '../components/Header';
 import SearchBarContext from '../context/SearchBarContext';
 import Footer from '../components/Footer';
 import Loading from '../components/Loading';
+import { requestData } from '../services/requests';
 
 function Recipes() {
   const { dataApi, setDataApi } = useContext(SearchBarContext);
@@ -68,48 +69,82 @@ function Recipes() {
     }
   }, [pathName]);
 
+  // useEffect(() => {
+  //   const getRecipes = async () => {
+  //     if (pathName === '/meals') {
+  //       setLoading(true);
+  //       const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+  //       const data = await response.json();
+  //       setDataApi({ meals: data.meals });
+  //       setLoading(false);
+  //     } else {
+  //       setLoading(true);
+  //       const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+  //       const data = await response.json();
+  //       setDataApi({ drinks: data.drinks });
+  //       setLoading(false);
+  //     }
+  //   };
+  //   getRecipes();
+  // }, [pathName, setDataApi, setLoading]);
+
   useEffect(() => {
-    const fetchApi = async () => {
-      if (pathName === '/meals') {
+    const getRecipes = async () => {
+      const endpoint = pathName === '/meals' ? '/meals' : '/drinks';
+      try {
         setLoading(true);
-        const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-        const data = await response.json();
-        setDataApi({ meals: data.meals });
+        const data = await requestData(endpoint);
+        const key = pathName === '/meals' ? 'meals' : 'drinks';
+        setDataApi({ [key]: data });
         setLoading(false);
-      } else {
-        setLoading(true);
-        const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
-        const data = await response.json();
-        setDataApi({ drinks: data.drinks });
+      } catch (error) {
+        console.error('Error fetching recipes:', error);
         setLoading(false);
       }
     };
-    fetchApi();
+    
+    getRecipes();
   }, [pathName, setDataApi, setLoading]);
 
-  const handleChangeCategory = async (category) => {
-    if (category === selectedCategory || category === 'all') {
-      setSelectedCategory('');
-      const url = pathName === '/meals'
-        ? 'https://www.themealdb.com/api/json/v1/1/search.php?s='
-        : 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-      setLoading(false);
-      const response = await fetch(url);
-      const data = await response.json();
-      setDataApi({ meals: data.meals, drinks: data.drinks });
-      setLoading(false);
-    } else {
-      const apiUrl = pathName === '/meals'
-        ? `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
-        : `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category === 'Other' ? 'Other / Unknown' : category}`;
-      setLoading(false);
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      setDataApi(pathName === '/meals' ? { meals: data.meals } : { drinks: data.drinks });
-      setSelectedCategory(category);
-      setLoading(false);
-    }
-  };
+  // const handleChangeCategory = async (category) => {
+  //   if (category === selectedCategory || category === 'all') {
+  //     setSelectedCategory('');
+  //     const url = pathName === '/meals'
+  //       ? 'https://www.themealdb.com/api/json/v1/1/search.php?s='
+  //       : 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  //     setLoading(false);
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  //     setDataApi({ meals: data.meals, drinks: data.drinks });
+  //     setLoading(false);
+  //   } else {
+  //     const apiUrl = pathName === '/meals'
+  //       ? `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+  //       : `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category === 'Other' ? 'Other / Unknown' : category}`;
+  //     setLoading(false);
+  //     const response = await fetch(apiUrl);
+  //     const data = await response.json();
+  //     setDataApi(pathName === '/meals' ? { meals: data.meals } : { drinks: data.drinks });
+  //     setSelectedCategory(category);
+  //     setLoading(false);
+  //   }
+  // };
+
+const handleChangeCategory = (category) => {
+  if (category === selectedCategory || category === 'all') {
+    setSelectedCategory('');
+    const filteredData = pathName === '/meals' ? dataApi.meals : dataApi.drinks;
+    setDataApi({ meals: filteredData, drinks: filteredData });
+  } else {
+    const filteredData = pathName === '/meals'
+      ? dataApi.meals.filter(meal => meal.strCategory === category)
+      : dataApi.drinks.filter(drink => drink.strCategory === category);
+
+    setDataApi(pathName === '/meals' ? { meals: filteredData } : { drinks: filteredData });
+    setSelectedCategory(category);
+  }
+};
+
   const newArr = [...dataApi[pathNameSplit] ? dataApi[pathNameSplit] : []];
   const isGreaterThan12 = newArr?.length > maxLength
     ? newArr.splice(0, maxLength) : newArr;
