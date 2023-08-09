@@ -14,7 +14,10 @@ export default class MealsService {
 
   public async getMealByName(strMeal: string): Promise<ServiceResponse<IMeal[]> | null> {
    const meal = await this.mealsModel.findOne({ where: { strMeal } });
-    if (!meal) return null ;
+    if (!meal || meal === undefined || strMeal === undefined) {
+      const allMeals = await this.mealsModel.findAll();
+      return { status: 'SUCCESSFUL', data: allMeals as any };
+    }
     return { status: 'SUCCESSFUL', data: meal as any };
   }
 

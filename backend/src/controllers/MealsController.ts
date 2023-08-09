@@ -6,14 +6,18 @@ export default class MealsController {
     private mealsService = new MealsService(),
   ) { }
 
-  public async getAllMeals(_req: Request, res: Response) {
-    const serviceResponse = await this.mealsService.getAllMeals();
-    res.status(200).json(serviceResponse.data);
-  }
+  // public async getAllMeals(req: Request, res: Response) {
+  //   const serviceResponse = await this.mealsService.getAllMeals();
+  //   res.status(200).json(serviceResponse.data);
+  // }
 
   public async getMealByName(req: Request, res: Response) {
-    // const { mealNameBody } = req.body
-    const { strMeal } = req.params;
+    const { strMeal } = req.body
+    // const { strMeal } = req.params;
+    if (!strMeal || strMeal === undefined) {
+      const serviceResponse = await this.mealsService.getAllMeals();
+      res.status(200).json(serviceResponse.data);
+    }
     const serviceResponse = await this.mealsService.getMealByName(strMeal);
     if (!serviceResponse) return null;
     res.status(200).json(serviceResponse.data);

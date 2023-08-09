@@ -6,8 +6,8 @@ const mealsController = new MealsController();
 const mealsRouter = Router();
 
 
-mealsRouter.get('/:strMeal', (req: Request, res: Response) => mealsController.getMealByName(req, res));
-mealsRouter.get('/', (req: Request, res: Response) => mealsController.getAllMeals(req, res));
+mealsRouter.get('/', (req: Request, res: Response) => mealsController.getMealByName(req, res));
+// mealsRouter.get('/', (req: Request, res: Response) => mealsController.getAllMeals(req, res));
 
 
 export default mealsRouter;
