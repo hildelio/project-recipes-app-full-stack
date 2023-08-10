@@ -1,5 +1,5 @@
 import * as express from 'express';
-import mealsRouter from './routes/mealsRoutes';
+import router from './routes';
 
 class App {
   public app: express.Express;
@@ -15,7 +15,7 @@ class App {
   }
 
   private routes(): void {
-    this.app.use('/meals', mealsRouter);
+    this.app.use(router);
   }
 
   private config():void {
