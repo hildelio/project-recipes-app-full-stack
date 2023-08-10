@@ -137,8 +137,8 @@ const handleChangeCategory = (category) => {
     setDataApi({ meals: filteredData, drinks: filteredData });
   } else {
     const filteredData = pathName === '/meals'
-      ? dataApi.meals.map(meal => meal.strCategory === category)
-      : dataApi.drinks.map(drink => drink.strCategory === category);
+      ? dataApi.meals.filter(meal => meal.strCategory === category)
+      : dataApi.drinks.filter(drink => drink.strCategory === category);
 
     setDataApi(pathName === '/meals' ? { meals: filteredData } : { drinks: filteredData });
     setSelectedCategory(category);
