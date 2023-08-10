@@ -34,34 +34,35 @@ function RecipeDetails() {
   }, [id, doneBtn]);
   useEffect(() => {
     const getRecipes = async () => {
-    if (pathName.includes('meals')) {
-      
-      setLoading(true);
-      const data = await requestData('/meals');
-      setDrinks(data.drinks.slice(0, sliceMax));
-      setLoading(false);
-      // fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-      //   .then((response) => response.json())
-      //   .then((data) => {
-      //     setRecipe(data.meals[0]);
-      //     setLoading(false);
-      //   });
-    } else {
-      setLoading(true);
-      fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
-        .then((response) => response.json())
-        .then((data) => {
-          setMeals(data.meals.slice(0, sliceMax));
-          setLoading(false);
-        });
-      setLoading(true);
-      fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setRecipe(data.drinks[0]);
-          setLoading(false);
-        });
-    }
+      try {
+        setLoading(true);
+        let carouselEndpoint, idEndpoint;
+        if (pathName === `/meals/${id}`) {
+          carouselEndpoint = '/drinks';
+          idEndpoint = `/meals/${id}`;
+        } else {
+          carouselEndpoint = '/meals';
+          idEndpoint = `/drinks/${id}`;
+        }
+
+        const dataCarousel = await requestData(carouselEndpoint);
+        const dataId = await requestData(idEndpoint);
+  
+        switch (pathName) {
+          case `/meals/${id}`:
+            setDrinks(dataCarousel.slice(0, sliceMax)); // ok 
+            setRecipe(dataId);
+            setLoading(false);
+            break
+          default:
+            setMeals(dataCarousel.slice(0, sliceMax));
+            setRecipe(dataId);
+            setLoading(false);
+        }
+      } catch (error) {
+        setLoading(false);
+        console.error('Error fetching recipes:', error);
+      }
   }
   getRecipes();
   }, [pathName, id]);
