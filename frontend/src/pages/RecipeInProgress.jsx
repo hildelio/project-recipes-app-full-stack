@@ -22,7 +22,7 @@ function RecipeInProgress() {
   const pathNameSlice = pathName.includes('meals') ? 'meals' : 'drinks';
   const copy = clipboardCopy;
 
-  // estado com os ingredientes checkados ou não
+  // estado com os ingredientes verificados ou não
   const [checkedIngredients, setCheckedIngredients] = useState({});
   const [showCopy, setShowCopy] = useState(false);
   const [getRecipe, setRecipe] = useState({});

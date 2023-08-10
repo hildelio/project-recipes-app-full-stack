@@ -8,6 +8,7 @@ import clipboardCopy from 'clipboard-copy';
 import { IoMdAdd, IoIosArrowBack } from 'react-icons/io';
 import Carousel from '../components/Carousel';
 import Loading from '../components/Loading';
+import { requestData } from '../services/requests';
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState({});
@@ -32,21 +33,19 @@ function RecipeDetails() {
     if (isFavorites) setIsFavorite(true);
   }, [id, doneBtn]);
   useEffect(() => {
+    const getRecipes = async () => {
     if (pathName.includes('meals')) {
+      
       setLoading(true);
-      fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
-        .then((response) => response.json())
-        .then((data) => {
-          setDrinks(data.drinks.slice(0, sliceMax));
-          setLoading(false);
-        });
-      setLoading(true);
-      fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setRecipe(data.meals[0]);
-          setLoading(false);
-        });
+      const data = await requestData('/meals');
+      setDrinks(data.drinks.slice(0, sliceMax));
+      setLoading(false);
+      // fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     setRecipe(data.meals[0]);
+      //     setLoading(false);
+      //   });
     } else {
       setLoading(true);
       fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
@@ -63,6 +62,8 @@ function RecipeDetails() {
           setLoading(false);
         });
     }
+  }
+  getRecipes();
   }, [pathName, id]);
   useEffect(() => {
     const ingredientsArray = [];
